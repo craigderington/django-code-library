@@ -1,0 +1,15 @@
+{% extends 'snippet_base.html' %}
+
+{% block news_entries %}
+    <div class="post">
+        <h2>{{ object.news_title }}</a></h2>
+        <p class="meta">Date Added: {{ object.create_date }}</p>
+        <p class="small">Author: {{ object.author }}</p>
+        <p>{{ object.story }}</p>
+        <p>&nbsp;</p>
+        <p class="small">Source: {{ object.source }}</p>
+    </div>
+    <div style="margin-top:15px;">
+      <a href="../" class="btn btn-md btn-primary"><i class="fa fa-arrow-circle-left"></i> Return to List</a>
+    </div>
+{% endblock %}

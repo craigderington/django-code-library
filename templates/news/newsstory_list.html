@@ -1,0 +1,14 @@
+{% extends 'news_base.html' %}
+{% load django_markdown %}
+
+{% block news_entries %}
+
+{% for object in object_list %}
+    <div class="post">
+        <h3><a href="{% url 'news:detail' object.slug %}">{{ object.news_title }}</a></h3>
+        <p class="meta">Author: {{object.author }} wrote on {{ object.create_date }}</p>
+        <p>{{ object.story|markdown }}</p>
+        <p class="small" style="margin-top:15px;">Source: <a href="{{ object.source_link }}" target="_blank"> {{ object.source_link }}</a></p>
+    </div>
+{% endfor %}
+{% endblock %}

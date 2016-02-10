@@ -1,0 +1,45 @@
+{% extends 'snippet_base.html' %}
+{% block snippet_entries %}
+
+<div style="margin-top:-30px;">
+  <form class="form-inline" method="post" action="">
+    {% csrf_token %}
+    <div class="form-group">
+      <input name="search_snippets" size="40" type="text" id="search_snippets" class="form-control" placeholder="Search Code Snippets">
+      <button name="search" class="btn btn-sm btn-default"><i class="fa fa-search"></i> Search</button>
+    </div>
+    <span class="pull-right">
+        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Add Code Snippet</a>
+    </span>
+  </form>
+</div>
+
+<div style="margin-top:20px;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Added</th>
+          <th>Author</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for object in object_list %}
+          <tr>
+            <!--<td><a href="../snippets/{{ object.id }}/">{{ object.snippet_title }}</a></td>-->
+            <td><a href="{% url 'snippets:detail' object.id %}">{{ object.snippet_title }}</a></td>
+            <td>{{ object.create_date }}</td>
+            <td>{{ object.author }}</td>
+            <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" class="small"><span class="label label-default">{{ object_list.count }} snippets found...</span></td>
+        </tr>
+      </tfoot>
+    </table>
+</div>
+{% endblock %}

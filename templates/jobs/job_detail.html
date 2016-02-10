@@ -1,0 +1,14 @@
+{% extends 'jobs_base.html' %}
+{% load django_markdown %}
+
+{% block job_entries %}
+    <div class="post">
+        <h2><a href="{% url 'jobs:detail' object.id %}">{{ object.job_title }}</a></h2>
+        <p class="small">Company: {{ object.job_company }}</p>
+        <p class="meta">Date Added: {{ object.job_post_date }}</p>
+        <p>{{ object.job_description|markdown }}</p>
+    </div>
+    <div style="margin-top:15px;">
+      <a href="../" class="btn btn-md btn-primary"><i class="fa fa-arrow-circle-left"></i> Return to List</a>
+    </div>
+{% endblock %}

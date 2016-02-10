@@ -1,0 +1,13 @@
+{% extends 'news_base.html' %}
+{% block news_entries %}
+
+{% for object in object_list %}
+    <div class="post">
+        <h3><a href="{% url 'news:news_detail' slug=object.slug %}">{{ object.news_title }}</a></h3>
+        <p class="meta">{{ object.create_date }}</p>
+        <p class="meta">Author: {{object.author }}</p>
+        <p>{{ object.story }}</p>
+        <p class="small" style="margin-top:15px;">Source: {{ object.source }}</p>
+    </div>
+{% endfor %}
+{% endblock %}

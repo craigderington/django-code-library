@@ -1,0 +1,16 @@
+{% extends 'snippet_base.html' %}
+{% load django_markdown %}
+
+{% block snippet_entries %}
+    <div class="post">
+        <h2>{{ object.snippet_title }}</a></h2>
+        <p class="meta">Date Added: {{ object.create_date }}</p>
+        <p class="small">Author: {{ object.author }}</p>
+        <p>{{ object.snippet_body|markdown }}</p>
+        <p>&nbsp;</p>
+        <p class="small">Tags: {{ object.snippet_tags.all|join:', ' }}</p>
+    </div>
+    <div style="margin-top:15px;">
+      <a href="../" class="btn btn-md btn-primary"><i class="fa fa-arrow-circle-left"></i> Return to List</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'jobs_base.html' %}
+{% load django_markdown %}
+
+{% block job_entries %}
+
+{% for object in object_list %}
+    <div class="post">
+        <h3><a href="{% url 'jobs:detail' object.id %}">{{ object.job_title }}</a></h3>
+        <p class="meta">{{ object.job_post_date }}</p>
+        <p class="meta">Company: {{object.job_company }}</p>
+        <p>{{ object.job_description|markdown}}</p>
+        <p>&nbsp;</p>
+        <p class="small">Job Post Expires: {{ object.job_post_end_date}}
+    </div>
+{% endfor %}
+{% endblock %}
