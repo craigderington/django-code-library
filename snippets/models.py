@@ -14,6 +14,7 @@ class SnippetTag(models.Model):
         verbose_name_plural = 'Snippet Tags'
         ordering = ['slug']
 
+
 class Snippet(models.Model):
     snippet_title = models.CharField(max_length=200, help_text='Limit your snippet titles to 200 characters.')
     snippet_body = models.TextField()
@@ -26,8 +27,8 @@ class Snippet(models.Model):
     def __str__(self):
         return self.snippet_title
 
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.get_object().id})
+    def get_absolute_url(self, pk):
+        return reverse('detail', (), {'pk': self.pk})
 
     class Meta:
         verbose_name = 'Python Snippet'

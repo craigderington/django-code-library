@@ -45,7 +45,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'registration',
     'crispy_forms',
-    'blog',
     'django_markdown',
     'snippets',
     'news',
@@ -92,6 +91,40 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+}
+
+# Django Suit configuration example
+SUIT_CONFIG = {
+    # header
+    'ADMIN_NAME': 'Django Code Library',
+    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_TIME_FORMAT': 'H:i',
+
+    # forms
+    'SHOW_REQUIRED_ASTERISK': True,  # Default True
+    'CONFIRM_UNSAVED_CHANGES': True, # Default True
+
+    # menu
+    'SEARCH_URL': '/admin/auth/user/',
+    'MENU_ICONS': {
+        'sites': 'icon-leaf',
+        'auth': 'icon-lock',
+    },
+    'MENU_OPEN_FIRST_CHILD': True, # Default True
+    # 'MENU_EXCLUDE': ('auth.group',),
+    'MENU': (
+         'sites',
+         {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+         {'app': 'blog', 'icon':'icon-signal', 'models': ('Entry', 'Tag')},
+         {'app': 'snippets', 'icon':'icon-globe', 'models': ('Snippet', 'SnippetTag')},
+         {'app': 'news', 'icon':'icon-globe', 'models': ('NewsStory', 'NewsSource')},
+         {'app': 'jobs', 'icon':'icon-globe', 'models': ('Job', 'JobType', 'JobContact', 'JobRequirement')},
+         {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+         {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+    ),
+
+    # misc
+    'LIST_PER_PAGE': 10
 }
 
 

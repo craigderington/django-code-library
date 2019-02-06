@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^snippets/', include('snippets.urls', namespace='snippets')),
     url(r'^news/', include('news.urls', namespace='news')),
     url(r'^jobs/', include('jobs.urls', namespace='jobs')),
-    url(r'^', include('blog.urls')),
+    url(r'^', include('snippets.urls', namespace='snippets')),
 ]
